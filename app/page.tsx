@@ -3,6 +3,14 @@ import Image from 'next/image';
 import Headbanner from './ui/headbanner';
 import LoginForm from './ui/login-form';
 
+const styles ={
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+}
+
 export default function page() {
     return (
         <main className="flex min-h-screen flex-col p-6">
