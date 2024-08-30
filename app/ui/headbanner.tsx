@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import styles from '@/app/ui/home.module.css';
 
 
 export default function Headbanner(){
     return(
-        <div className='flex w-full space-y-3'>
+        <div>
             <div>
                 <p>Links?</p>
 

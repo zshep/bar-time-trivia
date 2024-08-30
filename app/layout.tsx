@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import Headbanner from './ui/headbanner';
+import styles from '@/app/ui/home.module.css'
 
 
 // Metadata info
@@ -20,6 +22,7 @@ export default function RootLayout ({
 }) {
     return(
         <html lang="en">
+            <Headbanner></Headbanner>
             <body>{children}</body>
         </html>
     );
