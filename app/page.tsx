@@ -7,15 +7,13 @@ import LoginForm from './ui/login-form';
 
 export default function page() {
     return (
-        
-        
-        <main className="d-flex justify-content-center">
+
+
+        <main className="d-flex">
+
             
-            <div className='d-flex'>
-                <div>
-                    <div className="justify-content-center">
-                        <p>Bar Trivia Fun!</p>
-                    </div>
+                <div className='mt-5'>
+                    
                     <LoginForm></LoginForm>
                 </div>
                 <div>
@@ -25,13 +23,15 @@ export default function page() {
                         >
                             Welcome to the Dashboard
                         </Link>
-                        Logo!
+                        <div className='d-flex justify-content-center'>
+                            <h2>Logo!</h2>
+                        </div>
                     </div>
                 </div>
 
 
 
-            </div>
+            
 
 
 

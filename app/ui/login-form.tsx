@@ -6,18 +6,17 @@ export default function LoginForm (){
     /* TODO: create authentication and error display */
 
     return(
-        <form className="">    
-            <div className="border">
-                <p className="">Please Log In
-
-                </p>
-                <div className="w-full">
+       
+        <div className="d-flex justify-content-center flex-direction-colum border border-black rounded">    
+            <form className="">
+                <div>
+                    <p>Please Log In</p>
                     <div>
                         <label className="mb-3 block text-xs font-medium" htmlFor="email">
-                            Email
+                            Email 
                         </label>
                         <input
-                            className="peer block w-full rounded-md border border-gray-900"
+                            className="border"
                             id="email"
                             type="email"
                             name="email"
@@ -44,13 +43,22 @@ export default function LoginForm (){
                         />
                     </div>
                 </div>
-                <button
-                     
-                    id="button"
-                    name="loginBTN">
-                        Log In
-                </button>
-            </div>  
-        </form>
+                <div className="d-flex justify-content-center mb-2">
+                    <button
+                        type="submit"
+                        className="btn btn-outline-success"
+                        id="button"
+                        name="loginBTN">
+                            Log In
+                    </button>
+                </div>
+            </form>  
+        
+            <div className="d-flex justify-content-center m-1">
+            <button type="button" className="btn btn-outline-dark">Need a log in? Sign up today!</button>
+            </div>
+        </div>
+        
+        
     )
 }
