@@ -1,6 +1,7 @@
-import { Metadata } from 'next';
+import "bootstrap/dist/css/bootstrap.min.css"
+import './globals.css'
 import Headbanner from './ui/headbanner';
-import styles from '@/app/ui/home.module.css'
+import { Metadata } from 'next';
 
 
 // Metadata info
@@ -22,8 +23,12 @@ export default function RootLayout ({
 }) {
     return(
         <html lang="en">
+            
+            
+            <body>
             <Headbanner></Headbanner>
-            <body>{children}</body>
+                {children}
+            </body>
         </html>
     );
 

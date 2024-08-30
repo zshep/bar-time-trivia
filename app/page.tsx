@@ -1,17 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Headbanner from './ui/headbanner';
+
 import LoginForm from './ui/login-form';
 
 
 
 export default function page() {
     return (
-        <main className="flex min-h-screen flex-col p-6">
+        
+        
+        <main className="d-flex justify-content-center">
             
-            <div className='col'>
+            <div className='d-flex'>
                 <div>
-                    <div>
+                    <div className="justify-content-center">
                         <p>Bar Trivia Fun!</p>
                     </div>
                     <LoginForm></LoginForm>
@@ -21,7 +23,7 @@ export default function page() {
                         <Link
                             href="/dashboard"
                         >
-                            <span>Welcome to the Dashboard</span>
+                            Welcome to the Dashboard
                         </Link>
                         Logo!
                     </div>
