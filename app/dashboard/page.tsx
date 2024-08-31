@@ -23,8 +23,7 @@ export default function page() {
             <div>
                 <p>Soon they will notice my true power</p>
                 <div>
-                    <img>Something will go here</img>
-                
+                    <p>something else will be put here</p>
                 
                 
                 </div>
