@@ -9,7 +9,7 @@ export default function page() {
     return (
 
 
-        <main className="d-flex">
+        <main className="d-flex justify-content-center">
 
             
                 <div className='mt-5'>
