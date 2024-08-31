@@ -9,15 +9,15 @@ export default function page() {
     return (
 
 
-        <main className="d-flex justify-content-center">
+        <main className="d-flex justify-content-evenly">
 
             
                 <div className='mt-5'>
                     
                     <LoginForm></LoginForm>
                 </div>
-                <div>
-                    <div>
+                <div className='d-flex flex-column'>
+                    <div className='d-flex flex-column justify-content-space-between'>
                         <Link
                             href="/dashboard"
                         >
