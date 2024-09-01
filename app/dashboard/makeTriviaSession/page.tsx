@@ -1,6 +1,11 @@
 export default function makeTriviaSession() {
+    
+    
+    /*TODO:
+        create variables/ states to hold info for the number of rounds */
+    
     return (
-        <div className="d-flex flex-column justify-content-center">
+        <div className="d-flex flex-column justify-content-center align-content-center">
             <h3>This is the makeTrivia page!</h3>
             <p>Create a complete Trivia Session choosing up to 5 rounds. Decide what kind of questions you'll use and if you will use hints or not</p>
             <form>
@@ -16,8 +21,6 @@ export default function makeTriviaSession() {
                     required>
                     
                 </input>
-                
-                
 
 
             </form>
