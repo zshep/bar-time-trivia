@@ -5,7 +5,7 @@ export default function SideNav() {
         <div className="border border-dark h-100">
                 <ul className="nav flex-column">
                     <li className="nav-item">
-                        <a className="nav-link active" href="#">Home</a>
+                        <a className="nav-link active" href="/dashboard">Home</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/dashboard/makeTriviaSession">Make Trivia</a>

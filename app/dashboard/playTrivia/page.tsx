@@ -7,7 +7,7 @@ export default function playTrivia() {
             <div>
                 <div>
                     <button className="btn btn-success">
-                        <a href="#/"></a>
+                        <a href="#/">Create a Session</a>
                     </button>
                 </div>
                 <div>
@@ -21,8 +21,14 @@ export default function playTrivia() {
                         name="joincode"
                         placeholder="Enter Joincode"                    
                     />
-                    <button
-                        type="submit"></button>
+                    <div>
+                        <button
+                            className="btn btn-success"
+                            type="submit"
+                            id="joinsubmitbtn"
+                            >
+                                Join Game</button>
+                    </div>
                 </div>
                 <div>
                     
