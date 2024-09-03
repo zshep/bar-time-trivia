@@ -20,11 +20,18 @@ export default function page() {
                     <div className='d-flex flex-column justify-content-space-between'>
                         <Link
                             href="/dashboard"
+                            className='d-flex text-center'
                         >
                             Welcome to the Dashboard
                         </Link>
-                        <div className='d-flex justify-content-center'>
-                            <h2>Logo!</h2>
+                        <div className='d-flex justify-content-center flex-wrap'>
+                            
+                            <Image
+                                src="/jedi.jpg"
+                                alt="shep with lightsaber"
+                                height={400}
+                                width={300}
+                                />
                         </div>
                     </div>
                 </div>

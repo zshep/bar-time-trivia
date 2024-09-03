@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import './globals.css'
 import Headbanner from './ui/headbanner';
 import { Metadata } from 'next';
+import footerbar from "./ui/footerbar";
 
 
 // Metadata info
@@ -28,6 +29,7 @@ export default function RootLayout ({
             <body>
             <Headbanner></Headbanner>
                 {children}
+           
             </body>
         </html>
     );
