@@ -12,7 +12,7 @@ export default function SideNav() {
                             <a className="nav-link" href="/dashboard/makeTriviaSession">Make Trivia</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/dashboard/playTrivia">Play Trivia</a>
+                            <a className="nav-link" href="/playTrivia">Play Trivia</a>
                         </li>
                         
                     </ul>

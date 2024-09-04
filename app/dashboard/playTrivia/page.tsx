@@ -9,6 +9,7 @@ export default function playTrivia() {
                     <button className="btn btn-success">
                         <a href="#/">Create a Session</a>
                     </button>
+                        <p className="text-center">(admin only)</p>
                 </div>
                 <div className="mt-2 mb-2 d-flex flex-column">
                     <label
@@ -30,7 +31,7 @@ export default function playTrivia() {
                                 Join Game</button>
                     </div>
                 </div>
-                <div>
+                <div className="mt-3">
                     
                     <button className="btn btn-success">Want to Play Solo?</button>
                 </div>
