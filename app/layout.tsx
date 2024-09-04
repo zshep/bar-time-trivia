@@ -3,6 +3,7 @@ import './globals.css'
 import Headbanner from './ui/headbanner';
 import { Metadata } from 'next';
 import footerbar from "./ui/footerbar";
+import { Style } from "util";
 
 
 // Metadata info
@@ -24,7 +25,6 @@ export default function RootLayout ({
 }) {
     return(
         <html lang="en">
-            
             
             <body>
             <Headbanner></Headbanner>

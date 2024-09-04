@@ -2,11 +2,11 @@
 
 export default function page() {
     return (
-        <div>
+        
             
-            <div className="d-flex flex-row h-100 justify-content-center">
+            <div className="d-flex">
 
-                <div className="text-center">
+                <div className="">
                     <p>Soon they will notice my true power</p>
                     <div>
                         <p>something else will be put here</p>
@@ -21,7 +21,7 @@ export default function page() {
                 </div>
 
             </div>
-        </div>
+        
     );
 
 

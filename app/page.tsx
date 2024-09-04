@@ -17,7 +17,7 @@ export default function page() {
                     <LoginForm></LoginForm>
                 </div>
                 <div className='d-flex flex-column'>
-                    <div className='d-flex flex-column justify-content-space-between'>
+                    <div className='d-flex flex-column justify-content-space-between text-center'>
                         <Link
                             href="/dashboard"
                             className='d-flex text-center'

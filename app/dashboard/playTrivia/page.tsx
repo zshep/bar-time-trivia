@@ -1,16 +1,16 @@
 export default function playTrivia() {
     return (
         
-        <div className="d-flex alignself-center border-black border-round">
+        <div className="d-flex flex-column  m-2 border-black border-round">
 
             
-            <div>
+            <div className="d-flex flex-column">
                 <div>
                     <button className="btn btn-success">
                         <a href="#/">Create a Session</a>
                     </button>
                 </div>
-                <div>
+                <div className="mt-2 mb-2 d-flex flex-column">
                     <label
                         className="ml-2 text-md font-medium">
                             Enter join Code
@@ -21,7 +21,7 @@ export default function playTrivia() {
                         name="joincode"
                         placeholder="Enter Joincode"                    
                     />
-                    <div>
+                    <div className="mt-3">
                         <button
                             className="btn btn-success"
                             type="submit"
