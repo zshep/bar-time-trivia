@@ -1,9 +1,20 @@
+
+/* Grab */
+
 export default function lobby() {
 
 
     return (
+        <form>
+            <div> It's a me... Mario</div>
+            <label>
 
-        <div> It's a me... Mario</div>
+            </label>
+            <input>
+            </input>
+
+
+        </form>
 
     )
 
