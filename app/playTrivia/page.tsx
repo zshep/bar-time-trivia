@@ -6,12 +6,12 @@ export default function lobby() {
 
     return (
         
-        <div className="d-flex flex-column">
-        <div className="border border-dark rounded w-75">
+        <div className="d-flex flex-column justify-content-center">
+        <div className="border border-dark rounded w-75 bg-dark text-white  ">
             
                 <Link 
                     key="newSession"
-                    href="/playTrivia/createSession.tsx">
+                    href="/playTrivia/">
                         <p>Create a Session</p>
            
                 <p className="text-center">(admin only)</p>
