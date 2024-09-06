@@ -7,7 +7,7 @@ export default function lobby() {
     return (
         
         <div className="d-flex flex-column justify-content-center">
-        <div className="border border-dark rounded w-75 bg-dark text-white  ">
+        <div className="border border-dark rounded w-75 bg-dark text-white align-self-center  ">
             
                 <Link 
                     key="newSession"
