@@ -1,4 +1,8 @@
-export default function JoinGame() {
+'use client'
+
+
+
+export default function JoinSession() {
 
     return (
 

@@ -1,5 +1,6 @@
 import Link from "next/link"
-/* Grab */
+/* Grab create session form */
+import createSession from "../ui/playTrivia/createSession"
 
 export default function lobby() {
 
@@ -9,14 +10,14 @@ export default function lobby() {
         <div className="d-flex flex-column justify-content-center">
         <div className="border border-dark rounded w-75 bg-dark text-white align-self-center  ">
             
-                <Link 
+                 <Link 
                     key="newSession"
-                    href="/playTrivia/">
+                    href="/ui/playTrivia/createSession">
                         <p>Create a Session</p>
            
                 <p className="text-center">(admin only)</p>
                 
-                </Link>
+                </Link> 
         </div>
         <div className="mt-2 mb-2 d-flex flex-column">
             
