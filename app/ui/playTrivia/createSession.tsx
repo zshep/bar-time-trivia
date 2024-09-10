@@ -8,7 +8,7 @@ import { createsession } from '../../lib/actions'
 
 
 
-export default function createSession( ) {
+export default function CreateSession( ) {
     //use useAction state to create variable
 
 

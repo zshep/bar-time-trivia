@@ -20,15 +20,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout ({
     children,
+    play,
 }: {
     children: React.ReactNode;
+    play: React.ReactNode;
+    
 }) {
     return(
         <html lang="en">
             
             <body>
-            <Headbanner></Headbanner>
+            <Headbanner />
                 {children}
+                { play }
            
             </body>
         </html>

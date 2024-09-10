@@ -12,7 +12,7 @@ export default function lobby() {
             
                  <Link 
                     key="newSession"
-                    href="/ui/playTrivia/createSession">
+                    href="/playTrivia/createSession">
                         <p>Create a Session</p>
            
                 <p className="text-center">(admin only)</p>
