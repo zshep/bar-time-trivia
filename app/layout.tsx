@@ -20,10 +20,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout ({
     children,
-    play,
 }: {
     children: React.ReactNode;
-    play: React.ReactNode;
     
 }) {
     return(
@@ -31,9 +29,7 @@ export default function RootLayout ({
             
             <body>
             <Headbanner />
-                {children}
-                { play }
-           
+                {children}           
             </body>
         </html>
     );
