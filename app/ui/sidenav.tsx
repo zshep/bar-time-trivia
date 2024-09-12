@@ -12,14 +12,14 @@ export default function SideNav() {
                             <a className="nav-link" href="/dashboard/makeTriviaSession">Make Trivia</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/dashboard/playTrivia/createSession">Play Trivia</a>
+                            <a className="nav-link" href="/dashboard/playTrivia">Play Trivia</a>
                         </li>
                         
                     </ul>
                 </div>
 
 
-                <div className="text-center ">
+                <div className=" d-block position-bottom text-center ">
                     <ul>
                         
                             <a className="btn" href="/logout">Log Out</a>

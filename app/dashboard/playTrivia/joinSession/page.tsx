@@ -1,12 +1,11 @@
 import { Modal } from "../../../ui/modal"
-import CreateSession from "../../../ui/playTrivia/createSession"
+import JoinSession from "../../../ui/playTrivia/joinSession"
 
 export default function page() {
 
     return (
         <Modal>
-            <CreateSession />
-            
+            <JoinSession />
         </Modal>
     )
 }

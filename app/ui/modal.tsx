@@ -7,14 +7,15 @@ export function Modal( { children }: {children: React.ReactNode}) {
     const router = useRouter()
 
     return(
-        <>
+        <div>
             <button 
+            className="mb-3 btn border border-danger btn-danger text-black"
             onClick={() => {
                 router.back()
             }}>
-                Close Modal
+                Return
             </button>
             <div>{children}</div>
-        </>
+        </div>
     )
 }

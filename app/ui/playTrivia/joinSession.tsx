@@ -6,16 +6,19 @@ export default function JoinSession() {
 
     return (
 
-        <div>
-            <form>
-                
+        <form>
+            <div className="d-flex flex-column">
+
                 <label>Enter a Join Code</label>
-                <input>Enter Join Code</input>
+                <input
+                    type="text"
+                    placeholder="Enter Join Code" />
                 <button
+                    className="btn border border-dark mt-4 w-25 align-self-center"
                     type="submit"
-                    >
-                        Join</button>
-            </form>
-        </div>
+                >
+                    Join</button>
+            </div>
+        </form>
     )
 }

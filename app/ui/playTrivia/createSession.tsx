@@ -8,44 +8,48 @@ import { createsession } from '../../lib/actions'
 
 
 
-export default function CreateSession( ) {
+export default function CreateSession() {
     //use useAction state to create variable
 
 
     //grab array/list of available trvia game from backend
 
-    return(
-        <form 
-            className='d-flex flex-column justify-content-center'>
+    return (
+        <form>
+            <div className='d-flex flex-column'>
             <div>
                 <label
-                    
+
                     id="game"> Select a game
-                
+
                 </label>
                 <select
                     id="game"
                     name="game"
-                    >
-                    <br>
-                        </br>
+                >
                 </select>
-                    <label
-                        id="team_number">
-                        Number of teams
-                    </label>
-                    <input
-                        type='number'
-                        name="team_number">
-                    </input>
+            </div>
+            <div className='d-flex flex-column'>
+                <label
+                    id="team_number">
+                    Number of teams
+                </label>
+                
+                <input
+                    type='number'
+                    name="team_number"
+                    min={2}
+                    max={8}>
+                </input>
 
             </div>
-            <div>
+            </div>
+            <div className='mt-4'>
                 <button>
                     <Link
                         href={'/'}>
                         Create Session
-                    
+
                     </Link>
                 </button>
             </div>
