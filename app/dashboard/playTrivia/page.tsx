@@ -6,7 +6,7 @@ export default function lobby() {
 
     return (
         
-        <div className="d-flex flex-column justify-content-center">
+        <div className="d-flex flex-column">
         <div className="border border-dark rounded w-auto bg-dark text-white align-self-center  ">
             
                  <Link 

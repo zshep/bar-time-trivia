@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className="d-flex flex-column align-items-center w-25 ">
                     <Sidenav />
                 </div>
-                <main className="d-flex flex-stretch w-75 justify-content-around">
+                <main className="d-flex flex-stretch w-75 justify-content-center">
                     {children}
                 </main>
                 

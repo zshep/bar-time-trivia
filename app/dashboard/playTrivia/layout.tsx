@@ -15,11 +15,11 @@ export default function Layout({
 
     return (
         
-            <div className="d-flex flex-row h-100 justify-content-center">
+            <div className="d-flex flex-row h-100 w-100 justify-content-center">
                 
-                <main className="d-flex flex-column align-content-center border border-dark border-round h-50 w-auto min-w-50vw text-center mt-5">
+                <main className="d-flex flex-column align-content-center border border-dark border-round h-50 w-75 text-center mt-5">
                     <div className="border border-dark">
-                        <p>Bar-Time-Trivia Live</p>
+                        <p className="pt-2">Bar-Time-Trivia Live</p>
                     </div>
                     <div className="mt-4">
                         
