@@ -18,7 +18,7 @@ export default function SideNav() {
                         </li>
                         <li className="nav-item">
                             <Link
-                                href="dashboard/manageTeams">Manage Teams
+                                href="/dashboard/manageTeams">Manage Teams
                             </Link>
 
                         </li>
