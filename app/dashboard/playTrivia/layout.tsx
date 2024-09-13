@@ -17,7 +17,7 @@ export default function Layout({
         
             <div className="d-flex flex-row h-100 w-100 justify-content-center">
                 
-                <main className="d-flex flex-column align-content-center border border-dark border-round h-50 w-75 text-center mt-5">
+                <main className="d-flex flex-column align-content-center border border-dark border-round h-auto w-75 text-center mt-5">
                     <div className="border border-dark">
                         <p className="pt-2">Bar-Time-Trivia Live</p>
                     </div>
