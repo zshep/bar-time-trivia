@@ -7,7 +7,7 @@ export function Modal( { children }: {children: React.ReactNode}) {
     const router = useRouter()
 
     return(
-        <div>
+        <div className="">
             <button 
             className="mb-3 btn border border-danger btn-danger text-black"
             onClick={() => {

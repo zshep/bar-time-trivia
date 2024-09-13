@@ -1,18 +1,14 @@
-'use client';
-
 import Link from "next/link";
-import { useActionState } from 'react';
-import { authenticate } from '../lib/actions';
 
+export default function SignupForm() {
 
-export default function LoginForm() {
-
-    /* TODO: create authentication and error display */
-
-    return (
-        <>
-            <p className="text-center">Please Log In</p>
-            <div className="d-flex justify-content-center flex-column border border-black rounded m-2">
+return (
+    <>
+    <div>
+        <p>This be the sign up form</p>
+        
+    </div>
+    <div className="d-flex justify-content-center flex-column border border-black rounded m-2">
                 <div className="">
                     <form>
                         <div className="d-flex flex-column justify-content-space-between">
@@ -47,6 +43,22 @@ export default function LoginForm() {
                                     minLength={6}
                                 />
                             </div>
+                            <div className="d-flex flex-row justify-content-space-evenly mt-2">
+                                <label
+                                    className="ml-3 text-xs font-medium"
+                                    htmlFor="password2">
+                                    Password
+                                </label>
+                                <input
+                                    className="border ml-2"
+                                    id="password2"
+                                    type="password"
+                                    name="password2"
+                                    placeholder="Renter password"
+                                    required
+                                    minLength={6}
+                                />
+                            </div>
                         </div>
                     </form>
                     <div className="d-flex justify-content-center mb-2 mt-4">
@@ -55,20 +67,17 @@ export default function LoginForm() {
                             className="btn btn-outline-success"
                             id="button"
                             name="loginBTN">
-                            Log In
+                            Sign Up
                         </button>
                     </div>
                 </div>
 
-                <div className="d-flex justify-content-center m-1">
-                    <Link 
-                        type="button" 
-                        className="btn btn-outline-dark"
-                        href="/signup">Need a log in? Sign up today!
-                    </Link>
-                </div>
             </div>
-        </>
+    
+    </>
 
-    )
+)
+
+
+
 }

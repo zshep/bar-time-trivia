@@ -9,27 +9,29 @@ import { Style } from "util";
 // Metadata info
 export const metadata: Metadata = {
     title: {
-      template: '%s | Bar Time Trivia',
-      default: 'Bar Time Trivia',
+        template: '%s | Bar Time Trivia',
+        default: 'Bar Time Trivia',
     },
     description: 'A trivia app for bars to use with their customers',
     metadataBase: new URL('https://github.com/zshep'),
-  };
+};
 
 
 
-export default function RootLayout ({
+export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
-    
+
 }) {
-    return(
+    return (
         <html lang="en">
-            
+
             <body>
-            <Headbanner />
-                {children}           
+                <Headbanner />
+                <div className="d-flex justify-content-center text-center mt-4">
+                    {children}
+                </div>
             </body>
         </html>
     );

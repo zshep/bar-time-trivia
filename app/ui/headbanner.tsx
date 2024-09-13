@@ -9,7 +9,7 @@ export default function Headbanner(){
        
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid justify-content-center">
-      <Link className="navbar-brand" href="#">
+      <Link className="navbar-brand" href="/">
           Bar Time Trivia!
         </Link>
                 

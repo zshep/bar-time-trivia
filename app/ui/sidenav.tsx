@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import { signOut } from '@/auth';
 
 export default function SideNav() {
     return(
@@ -28,11 +29,18 @@ export default function SideNav() {
 
 
                 <div className="d-flex justify-content-center">
-                    <ul>
-                        
-                            <Link className="btn border border-dark" href="/logout">Log Out</Link>
-                        
-                    </ul>
+                    <form
+                        action={async () => {
+                        'use server';
+                        await signOut();
+
+                        }}
+                        >
+                        <button className="button btn-danger border border-danger">
+                            <div>Sign Out</div>
+                        </button>
+
+                    </form>
                 </div>
 
             </div>
