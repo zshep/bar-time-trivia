@@ -2,13 +2,7 @@
 
 import { useSelectedLayoutSegment } from "next/navigation";
 
-export default function Layout({ 
-    children,
-
-}: { 
-    children: React.ReactNode;
-    
-}) {
+export default function Layout({ children }: { children: React.ReactNode;}) {
     // unsure why i have this...apparently it reads as te folder i'll be in....
     const createSessionSegment = useSelectedLayoutSegment('createSession')
 
