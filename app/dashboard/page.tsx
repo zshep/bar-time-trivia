@@ -16,7 +16,7 @@ export default function page() {
                 </div>
                 <div className="border border-dark mt-5">
                     <div className=" border border-dark">
-                        <p className="text-center pt-3">User's Stats</p>
+                        <p className="text-center pt-3">Stats of user</p>
                     </div>
                     <div className="">
                         <p>user&apos;s stats on stuff</p>
@@ -35,7 +35,7 @@ export default function page() {
                     />
                 </div>
                 <div className="mt-4">
-                    <p> a users&apos;s list of teams??</p>
+                    <p>  list of teams</p>
                 </div>
             </div>
         </div>
