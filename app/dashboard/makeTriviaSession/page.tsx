@@ -7,7 +7,7 @@ export default function makeTriviaSession() {
     return (
         <div className="d-flex flex-column text-center">
             <h3>This is the makeTrivia page!</h3>
-            <p className="m-5">Create a complete Trivia Session choosing up to 5 rounds. Decide what kind of questions you'll use and if you will use hints or not</p>
+            <p className="m-5">Create a complete Trivia Session choosing up to 5 rounds. Decide what kind of questions you&apos;ll use and if you will use hints or not</p>
             <form>
                 <div className="d-flex flex-column align-items-center mb-2">
                     <label
