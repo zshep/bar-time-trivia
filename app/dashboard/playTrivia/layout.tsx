@@ -4,11 +4,10 @@ import { useSelectedLayoutSegment } from "next/navigation";
 
 export default function Layout({ 
     children,
-    joinSession, 
+
 }: { 
     children: React.ReactNode;
-    createSession: React.ReactNode;
-    joinSession: React.ReactNode; 
+    
 }) {
     // unsure why i have this...apparently it reads as te folder i'll be in....
     const createSessionSegment = useSelectedLayoutSegment('createSession')
