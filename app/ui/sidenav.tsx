@@ -28,7 +28,6 @@ export default function SideNav() {
                 </div>
 
 
-<<<<<<< HEAD
                 <div className="d-flex justify-content-center">
                    <form>
                         <button className="button btn-danger border border-danger">
@@ -36,14 +35,6 @@ export default function SideNav() {
                         </button>
 
                     </form>
-=======
-                <div>
-                    <ul>
-                        
-                            <Link className="btn" href="/logout">Log Out</Link>
-                        
-                    </ul>
->>>>>>> parent of 2f90938 (just messed with more styling...need to get to actual logic to run games)
                 </div>
 
             </div>
