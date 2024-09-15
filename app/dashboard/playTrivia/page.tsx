@@ -33,7 +33,7 @@ export default function lobby() {
             
             <Link
                 key="solo"
-                href="/dashboard/playTrivia/solo">
+                href="/dashboard/playtrivia/solo">
                     <p> Play Solo</p>
             
             </Link>

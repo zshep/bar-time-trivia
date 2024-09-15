@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default function SideNav() {
     return(
-        <div className="d-flex flex-column justify-content-between border border-dark h-100 w-100">
+        <div className="border border-dark h-100 w-100">
                 <div>
                     <ul className="nav flex-column text-center">
                         <li className="nav-item">
@@ -28,6 +28,7 @@ export default function SideNav() {
                 </div>
 
 
+<<<<<<< HEAD
                 <div className="d-flex justify-content-center">
                    <form>
                         <button className="button btn-danger border border-danger">
@@ -35,6 +36,14 @@ export default function SideNav() {
                         </button>
 
                     </form>
+=======
+                <div>
+                    <ul>
+                        
+                            <Link className="btn" href="/logout">Log Out</Link>
+                        
+                    </ul>
+>>>>>>> parent of 2f90938 (just messed with more styling...need to get to actual logic to run games)
                 </div>
 
             </div>
