@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { db } from '@vercel/postgres';
 
-cosnt client = await db.connect();
+const client = await db.connect();
 
 //creating schemas for tables
 
