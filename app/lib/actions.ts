@@ -1,7 +1,7 @@
 // page to hold all logic for action items (forms)
 
 'use server';
-import { signIn } from '@/auth';
+
 import { AuthError } from 'next-auth';
 import { z } from 'zod';
 
