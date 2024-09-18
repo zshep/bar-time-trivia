@@ -16,10 +16,10 @@ export default function page() {
                 </div>
                 <div className="border border-dark mt-5">
                     <div className=" border border-dark">
-                        <p className="text-center pt-3">User's Stats</p>
+                        <p className="text-center pt-3">User Stats</p>
                     </div>
                     <div className="">
-                        <p>user's stats on stuff</p>
+                        <p>user stats on stuff</p>
 
                     </div>
                 </div>
@@ -35,7 +35,7 @@ export default function page() {
                     />
                 </div>
                 <div className="mt-4">
-                    <p> a users's list of teams??</p>
+                    <p> a users list of teams??</p>
                 </div>
             </div>
         </div>
