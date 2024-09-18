@@ -1,5 +1,5 @@
 import { Modal } from "../../../ui/modal";
-import Soloplay from "../../../ui/playTrivia/solo";
+import  Soloplay  from "../../../ui/playTrivia/solo";
 
 export default function page() {
 
@@ -9,7 +9,6 @@ export default function page() {
             <Soloplay />
 
         </Modal>
-
 
     )
 }
