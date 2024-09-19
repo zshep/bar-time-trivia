@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { signUp, State } from "../lib/actions";
+import { useActionState } from "react";
+
+
 
 export default function SignupForm() {
+    const initialState: State = { message: null, errors: {} };
+    const [state, formAction] = useActionState(signUp, initialState );
 
 return (
     <>
