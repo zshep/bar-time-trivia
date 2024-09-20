@@ -16,7 +16,7 @@ return (
     </div>
     <div className="d-flex justify-content-center flex-column border border-black rounded m-2">
                 <div className="">
-                    <form>
+                    <form action={formAction}>
                         <div className="d-flex flex-column justify-content-space-between">
                             <div className="d-flex flex-row justify-content-evenly mb-2">
                                 <label className="ml-3 text-xs font-medium" htmlFor="email">
