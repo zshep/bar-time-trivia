@@ -33,6 +33,21 @@ return (
 
                                 />
                             </div>
+                            <div className="d-flex flex-row justify-content-evenly mb-2">
+                                <label className="ml-3 text-xs font-medium" htmlFor="email">
+                                    User Name
+                                </label>
+                                <input
+                                    className="border ml-2"
+                                    id="username"
+                                    type="text"
+                                    name="username"
+                                    placeholder="Enter usaername"
+                                    required
+                                    autoFocus
+
+                                />
+                            </div>
                             <div className="d-flex flex-row justify-content-space-evenly">
                                 <label
                                     className="ml-3 text-xs font-medium"
@@ -53,7 +68,7 @@ return (
                                 <label
                                     className="ml-3 text-xs font-medium"
                                     htmlFor="password2">
-                                    Password
+                                     Retype Password
                                 </label>
                                 <input
                                     className="border ml-2"

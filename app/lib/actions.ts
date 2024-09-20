@@ -3,7 +3,10 @@
 'use server';
 
 import { AuthError } from 'next-auth';
+import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
+import { redirect } from 'next/navigation';
+import { sql } from '@vercel/postgres';
 
 
 export type State = {
@@ -19,26 +22,68 @@ export type State = {
   // action to sign up 
 
   export async function signUp( previousState: unknown, formdata: FormData) {
-     
-    'use server';
-
-    console.log("attempting to get user inputs")
-
-    const email = formdata.get('email');
-
-    console.log(email)
+    //console.log("attempting to get user inputs")
+    
+    //validate data
 
     const userData = {
       user_email: formdata.get('email'),
+      username: formdata.get('username'),
       user_password: formdata.get('password'),
       password_check: formdata.get('password2')
     }
 
-
     console.log(userData);
-  
+    let user_email = userData.user_email;
+
+    // check if passwords match
+    if (userData.user_password != userData.password_check) {
+      console.log("passwords do not match!");
+
+      revalidatePath('/signup');
+      redirect('/signup');
+    }
+
+    // check to see if useralready as email 
+    try {
+      const email_response = await sql`
+      SELECT email FROM users where email = ${user_email}
+      `;
+
+      console.log(email_response);
+
+      if (!email_response) {
+        console.log("GOOD NEWS! we can proceed")
+
+      } else {
+        console.log("this email already exists")
+
+      
+        return {
+          message: 'did not work'
+        }
+
+      }
+
+    } catch(error) {
+      return {
+        message: 'Database Error: Could not access usernames',
+      }
+
+    }
+
+    //check if username is already in use
+
+    try {
 
 
+    } catch (error){
+      return {
+        message: 'Database Error: Failed to create Account',
+      }
+
+    }
+ 
   }
 
 
