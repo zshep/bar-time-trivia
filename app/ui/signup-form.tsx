@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { signUp, State } from "../lib/actions";
-import { useActionState } from "react";
-
+// import { useActionState } from "react";
+import { useFormState } from 'react-dom';
 
 
 export default function SignupForm() {
-    const initialState: State = { message: null, errors: {} };
-    const [state, formAction] = useActionState(signUp, initialState );
+    
+    const [state, formAction] = useFormState(signUp, undefined );
 
 return (
     <>
@@ -46,7 +46,7 @@ return (
                                     name="password"
                                     placeholder="Enter password"
                                     required
-                                    minLength={6}
+                                    minLength={3}
                                 />
                             </div>
                             <div className="d-flex flex-row justify-content-space-evenly mt-2">
@@ -62,12 +62,11 @@ return (
                                     name="password2"
                                     placeholder="Renter password"
                                     required
-                                    minLength={6}
+                                    minLength={3}
                                 />
                             </div>
                         </div>
-                    </form>
-                    <div className="d-flex justify-content-center mb-2 mt-4">
+                        <div className="d-flex justify-content-center mb-2 mt-4">
                         <button
                             type="submit"
                             className="btn btn-outline-success"
@@ -76,6 +75,8 @@ return (
                             Sign Up
                         </button>
                     </div>
+                    </form>
+                    
                 </div>
 
             </div>

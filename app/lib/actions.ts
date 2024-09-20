@@ -18,9 +18,16 @@ export type State = {
 
   // action to sign up 
 
-  export async function signUp(formdata: FormData) {
+  export async function signUp( previousState: unknown, formdata: FormData) {
+     
+    'use server';
 
     console.log("attempting to get user inputs")
+
+    const email = formdata.get('email');
+
+    console.log(email)
+
     const userData = {
       user_email: formdata.get('email'),
       user_password: formdata.get('password'),
