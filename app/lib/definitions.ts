@@ -2,10 +2,18 @@
 
 export type User = {
     id: string;
-    name: string;
+    username: string;
     email: string;
     password: string;
   };
+
+  export type signupForm = {
+    id: string;
+    username: string;
+    email: string;
+    password: string;
+    
+  }
 
 
   // type for live game sessons

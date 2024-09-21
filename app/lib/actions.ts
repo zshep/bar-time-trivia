@@ -4,9 +4,10 @@
 
 import { AuthError } from 'next-auth';
 import { revalidatePath } from 'next/cache';
-import { z } from 'zod';
+import { string, z } from 'zod';
 import { redirect } from 'next/navigation';
 import { sql } from '@vercel/postgres';
+import { signupForm } from './definitions';
 
 
 export type State = {
@@ -46,8 +47,8 @@ export type State = {
 
     // check to see if useralready as email 
     try {
-      const email_response = await sql`
-      SELECT email FROM users where email = ${user_email}
+      const email_response = await sql<signupForm>`
+      SELECT email FROM users where email =
       `;
 
       console.log(email_response);
