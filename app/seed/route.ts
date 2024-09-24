@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import { db } from '@vercel/postgres';
+import { users } from '../lib/placeholder-data';
 
 const client = await db.connect();
 
@@ -15,6 +16,19 @@ async function createUsers() {
         password TEXT NOT NULL
         );
     `;
+
+    const insertedUsers = await Promise.all(users.map(async (user) => {
+
+        const hashPassword = await bcrypt.hash(user.password, 10);
+        return client.sql`
+        Insert INTO users (id, name, email, password)
+        VALUES (${user.id}, ${user.username}, ${user.email}, ${hashPassword})
+        ON CONFLICT (id) DO NOTHING
+        `;
+    })
+    );
+
+    return insertedUsers;
 }
 
 // Teams Schema
@@ -94,4 +108,25 @@ async function createQuestions() {
         hint2 TEXT
         );
     `;
+}
+
+
+
+export async function GET(){
+
+    try{
+        await client.sql`BEGIN`;
+        await createUsers();
+        await createTeam();
+        await createSession();
+        await createGame();
+        await createRound();
+        await createQuestions();
+        await client.sql `COMMIT`;
+
+        return Response.json( {message: 'Database seeded successfully' });
+    } catch(error){
+        await client.sql`ROLLBACK`;
+        return Response.json({ error }, {status: 500});
+    }
 }

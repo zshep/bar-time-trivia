@@ -22,7 +22,7 @@ export type State = {
 
   // action to sign up 
 
-  export async function signUp( previousState: unknown, formdata: FormData) {
+  export async function signUp( previousState: unknown, formdata: any) {
     //console.log("attempting to get user inputs")
     
     //validate data
@@ -48,7 +48,7 @@ export type State = {
     // check to see if useralready as email 
     try {
       const email_response = await sql<signupForm>`
-      SELECT email FROM users where email =
+      SELECT email FROM users where email = ${userData.user_email}
       `;
 
       console.log(email_response);
