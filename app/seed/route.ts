@@ -16,7 +16,7 @@ async function createUsers() {
         password TEXT NOT NULL
         );
     `;
-
+    /*
     const insertedUsers = await Promise.all(users.map(async (user) => {
 
         const hashPassword = await bcrypt.hash(user.password, 10);
@@ -29,7 +29,31 @@ async function createUsers() {
     );
 
     return insertedUsers;
+    */
+    
+    }
+
+export async function GET(){
+
+    console.log("attempting to create user table");
+    try{
+        await client.sql`BEGIN`;
+        await createUsers();
+        await client.sql`
+        INSERT INTO users (id, username, email, password)
+        VALUES ('410544b2-4001-4271-9855-fec4b6a6442a', 'sheperton','barry@btt.com', '123')
+        ON CONFLICT (id) DO NOTHING`;
+       
+        await client.sql `COMMIT`;
+
+        return Response.json( {message: 'Database seeded successfully' });
+    } catch(error){
+        await client.sql`ROLLBACK`;
+        return Response.json({ error }, {status: 500});
+    }
 }
+
+/* 
 
 // Teams Schema
 async function createTeam() {
@@ -130,3 +154,5 @@ export async function GET(){
         return Response.json({ error }, {status: 500});
     }
 }
+
+*/
