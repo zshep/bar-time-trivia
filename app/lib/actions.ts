@@ -8,6 +8,7 @@ import { string, z } from 'zod';
 import { redirect } from 'next/navigation';
 import { sql } from '@vercel/postgres';
 import { signupForm } from './definitions';
+import { db } from '@vercel/postgres';
 
 
 export type State = {
@@ -20,58 +21,13 @@ export type State = {
   };
 
 
-  // function to check if email already exists in db
-  async function checkemail(email: string){
-    try {
-      console.log(email)
-      const email_response = await sql<signupForm>`
-      SELECT email FROM users where email = ${email}
-      `;
-
-      //console.log(email_response.rows[0]);
-
-      if (!email_response.rows[0]) {
-        console.log("GOOD NEWS! we can proceed")
-        return true
-
-      } else {
-        console.log("this email already exists")
-        return false
-      }
-
-    } catch(error) {
-      return {
-        message: 'Database Error: Could not access emails', error
-      }
-    }
-  }
-  
-// function to check if username already exists in db
-async function checkusername(username: string){
-  try {
-    console.log(username)
-    let response = await sql`
-    SELECT username FROM users WHERE username = ${username}`;
-
-    console.log(response.rows[0]);
-    if (!response.rows[0]) {
-      return true
-    } else {
-      console.log('this username already exists');
-      return false
-    }
-
-  }catch(error){
-    message: error
-  }
-
-
-}
 
   // action to sign up 
 
   export async function signUp( previousState: unknown, formdata: any) {
     console.log("attempting to get user inputs")
+
+    const client = await db.connect();
     
     //validate data
 
@@ -94,22 +50,76 @@ async function checkusername(username: string){
       console.log("passwords match");
     }
     console.log('pulling emails from DB');
+    
     // check to see if useralready as email 
-     if (!checkemail(userData.user_email)){
-      console.log('email already in use');
-      return { message: 'the email already exists'}
-     }
-     //check if username is already in use
-     if (!checkusername(userData.username)){
-      console.log("username already in use");
-      return { message: 'the username already exists'}
-     }
-     console.log('ready to move forward')
+    
+    try {
+      
+      const email_response = await sql<signupForm>`
+      SELECT email FROM users where email = ${userData.user_email}
+      `;
+
+      //console.log(email_response.rows[0]);
+
+      if (!email_response.rows[0]) {
+        console.log("GOOD NEWS! we can proceed")
+
+      } else {
+        console.log("this email already exists")
+        return {
+          message: 'Email already exists'
+        };
+      }
+
+    } catch(error) {
+      return {
+        message: 'Database Error: Could not access emails', error
+      };
+    }
+           
+    
+    // checking to see if username is free
+    
+    try {
+      
+      let response = await sql`
+      SELECT username FROM users WHERE username = ${userData.username}`;
+  
+      console.log(response.rows[0]);
+      if (response.rows[0]) {
+        console.log("this username already exists");
+        return {
+          message: "username already exists"
+        }
+      } else {
+        console.log('we can add this user');
+      }
+  
+    }catch(error){
+      message: error
+    }
+    
+    console.log("adding user to db")
+
+    try {
+      await client.sql`
+        INSERT INTO users (username, email, password)
+        VALUES ('${userData.username}','${userData.user_email}', '${userData.user_password}')
+      `;
+
+      await client.sql `COMMIT`;
+      console.log("user should have been added")
+      redirect("/")
+
+
+    } catch(error) {
+      console.error("something fucked up", error)
+    }
    
   }
 
 
-// make action to create Session
+
 export async function createsession(prevState: State, formdata: FormData) {
 
   console.log("create session has been started");
