@@ -1,7 +1,7 @@
 // page to hold all logic for action items (forms)
 
 'use server';
-
+import bcrypt from 'bcrypt';
 import { AuthError } from 'next-auth';
 import { revalidatePath } from 'next/cache';
 import { string, z } from 'zod';
@@ -21,7 +21,6 @@ export type State = {
   };
 
 
-
   // action to sign up 
 
   export async function signUp( previousState: unknown, formdata: any) {
@@ -38,6 +37,8 @@ export type State = {
       password_check: formdata.get('password2')
     }
 
+    
+
     console.log(userData);
 
     // check if passwords match
@@ -46,9 +47,8 @@ export type State = {
       return {
         message: 'passwords did not match'
       }
-    } else {
-      console.log("passwords match");
-    }
+    } 
+
     console.log('pulling emails from DB');
     
     // check to see if useralready as email 
@@ -85,7 +85,7 @@ export type State = {
       let response = await sql`
       SELECT username FROM users WHERE username = ${userData.username}`;
   
-      console.log(response.rows[0]);
+      // console.log(response.rows[0]);
       if (response.rows[0]) {
         console.log("this username already exists");
         return {
@@ -102,20 +102,24 @@ export type State = {
     console.log("adding user to db")
 
     try {
-      await client.sql`
+      const hashedPassword = await bcrypt.hash(userData.user_password, 10)
+
+      await sql`
         INSERT INTO users (username, email, password)
-        VALUES ('${userData.username}','${userData.user_email}', '${userData.user_password}')
+        VALUES (${userData.username}, ${userData.user_email}, ${hashedPassword})
       `;
 
-      await client.sql `COMMIT`;
+      await sql `COMMIT`;
       console.log("user should have been added")
-      redirect("/")
+      
 
 
     } catch(error) {
       console.error("something fucked up", error)
     }
-   
+    
+    redirect('/');
+
   }
 
 
