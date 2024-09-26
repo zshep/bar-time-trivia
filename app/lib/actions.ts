@@ -24,11 +24,9 @@ export type State = {
   // action to sign up 
 
   export async function signUp( previousState: unknown, formdata: any) {
-    console.log("attempting to get user inputs")
-
-    const client = await db.connect();
-    
-    //validate data
+    // console.log("attempting to get user inputs")
+       
+    //TODO: git validate data
 
     const userData = {
       user_email: formdata.get('email'),
@@ -36,10 +34,6 @@ export type State = {
       user_password: formdata.get('password'),
       password_check: formdata.get('password2')
     }
-
-    
-
-    console.log(userData);
 
     // check if passwords match
     if (userData.user_password != userData.password_check) {
@@ -119,6 +113,37 @@ export type State = {
     }
     
     redirect('/');
+
+  }
+
+  export async function logIn(previousState: unknown, formdata: any) {
+    // log in details
+
+    const data = {
+      email: formdata.get('email'),
+      password: formdata.get('password')
+    }
+
+    console.log(data);
+
+    // look for user using email
+    try {
+
+      const user = await sql`
+        SELECT email, password FROM users WHERE email = ${data.email}`
+
+        if (!user) {
+          console.log('this user does not exist') ;
+
+          redirect('/');
+        }
+
+        console.log(user.fields)
+    
+      
+    }catch(error){
+      console.log("could not look up user", error)
+    }
 
   }
 

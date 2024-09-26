@@ -1,7 +1,9 @@
 'use client';
 
 import Link from "next/link";
+import { logIn } from "../lib/actions";
 import { useActionState } from 'react';
+import { useFormState } from "react-dom";
 
 
 
@@ -9,12 +11,14 @@ export default function LoginForm() {
 
     /* TODO: create authentication and error display */
 
+    const [state, formAction] = useFormState(logIn, undefined);
+
     return (
         <>
             <p className="text-center">Please Log In</p>
             <div className="d-flex justify-content-center flex-column border border-black rounded m-2">
                 <div className="">
-                    <form>
+                    <form action={formAction}>
                         <div className="d-flex flex-column justify-content-space-between">
                             <div className="d-flex flex-row justify-content-evenly mb-2">
                                 <label className="ml-3 text-xs font-medium" htmlFor="email">
@@ -44,12 +48,11 @@ export default function LoginForm() {
                                     name="password"
                                     placeholder="Enter password"
                                     required
-                                    minLength={6}
+                                    minLength={3}
                                 />
                             </div>
                         </div>
-                    </form>
-                    <div className="d-flex justify-content-center mb-2 mt-4">
+                        <div className="d-flex justify-content-center mb-2 mt-2">
                         <button
                             type="submit"
                             className="btn btn-outline-success"
@@ -58,6 +61,8 @@ export default function LoginForm() {
                             Log In
                         </button>
                     </div>
+                    </form>
+                 
                 </div>
 
                 <div className="d-flex justify-content-center m-1">
