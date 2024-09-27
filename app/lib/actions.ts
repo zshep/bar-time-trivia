@@ -9,6 +9,7 @@ import { redirect } from 'next/navigation';
 import { sql } from '@vercel/postgres';
 import { signupForm } from './definitions';
 import { db } from '@vercel/postgres';
+import { User } from './definitions'
 
 
 export type State = {
@@ -128,16 +129,17 @@ export type State = {
 
     // look for user using email
     try {
+      console.log('the email should be:', data.email);
 
-      const user = await sql`
-        SELECT email, password FROM users WHERE email = ${data.email}`
+      const user = await sql<User>`
+        SELECT * FROM users WHERE email = ${data.email}`;
 
         if (!user) {
           console.log('this user does not exist') ;
 
           redirect('/');
         }
-
+        console.log(user)
         console.log(user.fields)
     
       
