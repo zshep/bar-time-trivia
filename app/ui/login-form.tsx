@@ -1,9 +1,10 @@
 'use client';
 
 import Link from "next/link";
-import { logIn } from "../lib/actions";
+import { logIn, authenticate } from "../lib/actions";
 import { useActionState } from 'react';
 import { useFormState } from "react-dom";
+
 
 
 
@@ -11,7 +12,10 @@ export default function LoginForm() {
 
     /* TODO: create authentication and error display */
 
-    const [state, formAction] = useFormState(logIn, undefined);
+    const [errorMessage, formAction, isPending] = useActionState(
+        authenticate,
+        undefined,
+      );
 
     return (
         <>
@@ -54,12 +58,24 @@ export default function LoginForm() {
                         </div>
                         <div className="d-flex justify-content-center mb-2 mt-2">
                         <button
+                            aria-disabled={isPending}
                             type="submit"
                             className="btn btn-outline-success"
                             id="button"
                             name="loginBTN">
                             Log In
                         </button>
+                        <div
+          className="flex h-8 items-end space-x-1"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {errorMessage && (
+            <>
+              <p className="text-sm text-red-500">{errorMessage}</p>
+            </>
+          )}
+        </div>
                     </div>
                     </form>
                  

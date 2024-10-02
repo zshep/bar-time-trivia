@@ -10,6 +10,7 @@ import { sql } from '@vercel/postgres';
 import { signupForm } from './definitions';
 import { db } from '@vercel/postgres';
 import { User } from './definitions'
+import { signIn } from 'next-auth/react';
 
 
 export type State = {
@@ -149,6 +150,25 @@ export type State = {
 
   }
 
+  //authentication 
+  export async function authenticate(
+    prevState: string | undefined,
+    formData: FormData,
+  ) {
+    try {
+      await signIn('credentials', formData);
+    } catch (error) {
+      if (error instanceof AuthError) {
+        switch (error.type) {
+          case 'CredentialsSignin':
+            return 'Invalid credentials.';
+          default:
+            return 'Something went wrong.';
+        }
+      }
+      throw error;
+    }
+  }
 
 
 export async function createsession(prevState: State, formdata: FormData) {
