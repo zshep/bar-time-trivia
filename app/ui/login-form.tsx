@@ -12,7 +12,7 @@ export default function LoginForm() {
 
     /* TODO: create authentication and error display */
 
-    const [errorMessage, formAction, isPending] = useActionState(
+    const [errorMessage, formAction, isPending] = useFormState(
         authenticate,
         undefined,
       );

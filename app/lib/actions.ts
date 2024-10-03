@@ -153,7 +153,7 @@ export type State = {
   //authentication 
   export async function authenticate(
     prevState: string | undefined,
-    formData: FormData,
+    formData: any,
   ) {
     try {
       await signIn('credentials', formData);
