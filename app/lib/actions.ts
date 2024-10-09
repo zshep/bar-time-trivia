@@ -10,7 +10,7 @@ import { sql } from '@vercel/postgres';
 import { signupForm } from './definitions';
 import { db } from '@vercel/postgres';
 import { User } from './definitions'
-import { signIn } from 'next-auth/react';
+import { signIn } from '../../auth';
 
 
 export type State = {
@@ -153,8 +153,9 @@ export type State = {
   //authentication 
   export async function authenticate(
     prevState: string | undefined,
-    formData: any,
+    formData: FormData,
   ) {
+    console.log("attempting to authenticate")
     try {
       await signIn('credentials', formData);
     } catch (error) {
@@ -168,6 +169,7 @@ export type State = {
       }
       throw error;
     }
+    console.log("authenticate success")
   }
 
 
