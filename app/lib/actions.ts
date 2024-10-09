@@ -162,7 +162,7 @@ export type State = {
       if (error instanceof AuthError) {
         switch (error.type) {
           case 'CredentialsSignin':
-            return 'Invalid credentials.';
+            return 'Incorrect Email and password';
           default:
             return 'Something went wrong.';
         }
@@ -171,6 +171,8 @@ export type State = {
     }
     console.log("authenticate success")
   }
+
+  
 
 
 export async function createsession(prevState: State, formdata: FormData) {

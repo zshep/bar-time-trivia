@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { logIn, authenticate } from "../lib/actions";
+import { authenticate } from "../lib/actions";
 import { useActionState } from 'react';
 import { useFormState } from "react-dom";
 
@@ -10,12 +10,12 @@ import { useFormState } from "react-dom";
 
 export default function LoginForm() {
 
-    /* TODO: create authentication and error display */
+   
 
     const [errorMessage, formAction, isPending] = useFormState(
         authenticate,
         undefined,
-      );
+    );
 
     return (
         <>
@@ -57,33 +57,33 @@ export default function LoginForm() {
                             </div>
                         </div>
                         <div className="d-flex flex-column justify-content-center align-items-center mb-2 mt-2">
-                        <button
-                            aria-disabled={isPending}
-                            type="submit"
-                            className="btn btn-outline-success w-75 "
-                            id="button"
-                            name="loginBTN">
-                            Log In
-                        </button>
-                        <div
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {errorMessage && (
-            <>
-              <p className="mt-2 text-md text-danger  font-weight-bold">{errorMessage}</p>
-            </>
-          )}
-        </div>
-                    </div>
+                            <button
+                                aria-disabled={isPending}
+                                type="submit"
+                                className="btn btn-outline-success w-75 "
+                                id="button"
+                                name="loginBTN">
+                                Log In
+                            </button>
+                            <div
+                                className="d-flex flex-wrap"
+                                aria-live="polite"
+                                aria-atomic="true"
+                            >
+                                {errorMessage && (
+                                    <>
+                                        <p className="mt-2 text-md text-danger  font-weight-bold">{errorMessage}</p>
+                                    </>
+                                )}
+                            </div>
+                        </div>
                     </form>
-                 
+
                 </div>
 
                 <div className="d-flex justify-content-center m-1 mb-2">
-                    <Link 
-                        type="button" 
+                    <Link
+                        type="button"
                         className="btn btn-outline-dark"
                         href="/signup">Need a log in? Sign up today!
                     </Link>
