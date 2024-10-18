@@ -1,6 +1,7 @@
 // page to hold all logic for action items (forms)
+"use server";
 
-'use server';
+
 import bcrypt from 'bcrypt';
 import { AuthError } from 'next-auth';
 import { revalidatePath } from 'next/cache';
@@ -10,7 +11,8 @@ import { sql } from '@vercel/postgres';
 import { signupForm } from './definitions';
 import { db } from '@vercel/postgres';
 import { User } from './definitions'
-import { signIn } from '../../auth';
+import { signIn, signOut } from '../../auth';
+
 
 
 export type State = {
@@ -172,7 +174,7 @@ export type State = {
     console.log("authenticate success")
   }
 
-  
+
 
 
 export async function createsession(prevState: State, formdata: FormData) {

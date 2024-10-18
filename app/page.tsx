@@ -1,3 +1,5 @@
+
+
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -12,18 +14,12 @@ export default function page() {
         <main className="d-flex justify-content-evenly">
 
             
-                <div className='mt-5'>
+                <div className='mt-5 '>
                     
                     <LoginForm></LoginForm>
                 </div>
-                <div className='d-flex flex-column'>
+                <div className='d-flex flex-column '>
                     <div className='d-flex flex-column justify-content-space-between text-center'>
-                        <Link
-                            href="/dashboard"
-                            className='d-flex text-center'
-                        >
-                            Welcome to the Dashboard
-                        </Link>
                         <div className='d-flex justify-content-center flex-wrap'>
                             
                             <Image
