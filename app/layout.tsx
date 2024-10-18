@@ -29,7 +29,7 @@ export default function RootLayout({
 
             <body>
                 <Headbanner />
-                <div className="d-flex justify-content-center text-center mt-4">
+                <div className="d-flex justify-content-center align-items-stretch text-center mt-4">
                     {children}
                 </div>
             </body>
