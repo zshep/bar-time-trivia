@@ -120,34 +120,20 @@ export type State = {
 
   }
 
-  export async function logIn(previousState: unknown, formdata: any) {
-    // log in details
-
-    const data = {
-      email: formdata.get('email'),
-      password: formdata.get('password')
-    }
-
-    console.log(data);
-
-    // look for user using email
+  // grabbing user data
+  export async function fetchUserInfo( id: string) {
     try {
-      console.log('the email should be:', data.email);
 
-      const user = await sql<User>`
-        SELECT * FROM users WHERE email = ${data.email}`;
-
-        if (!user) {
-          console.log('this user does not exist') ;
-
-          redirect('/');
-        }
-        console.log(user)
-        console.log(user.fields)
-    
+      const data = await sql
+      'SELECT * from users where id = ${id}';
+      console.log(data);
       
-    }catch(error){
-      console.log("could not look up user", error)
+      return data;
+
+    } catch(error) {
+      console.error('Database Error:', error);
+      throw new Error('failed to fetch user info')
+
     }
 
   }

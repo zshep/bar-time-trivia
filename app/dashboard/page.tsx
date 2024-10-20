@@ -1,9 +1,17 @@
 import Image from "next/image";
+import { fetchUserInfo } from "../lib/actions";
+import { useSession } from "next-auth/react";
 
 //grab info from users such as username, stats, etc.
 
 
+
+
 export default function page() {
+  
+    
+    
+
     return (
 
 
