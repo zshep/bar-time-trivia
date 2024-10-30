@@ -1,4 +1,8 @@
 import type { NextAuthConfig } from 'next-auth';
+import  NextAuthOptions  from "next-auth";
+import { NextRequest, NextResponse } from "next/server";
+
+import { Session } from  "next-auth";
  
 export const authConfig = {
   pages: {
@@ -16,8 +20,9 @@ export const authConfig = {
       }
       return true;
     },
-    session({session, user}) {
+    async session({session, user}) {
 
+      session.user.id = user.id;
       console.log("the session has been initiated");
       console.log("user: ", user);
       console.log("session: ", session);
@@ -28,3 +33,9 @@ export const authConfig = {
   providers: [], // Add providers with an empty array for now
   secret: process.env.SECRET, 
 } satisfies NextAuthConfig;
+
+export async function middleware(req: NextRequest) {
+  // Await cookies() and headers() calls
+  const cookies = await req.cookies;
+  const headers = await req.headers;
+}

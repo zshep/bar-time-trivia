@@ -142,22 +142,29 @@ export type State = {
   export async function authenticate(
     prevState: string | undefined,
     formData: FormData,
-  ) {
-    console.log("attempting to authenticate")
+  ): Promise<string | void> {
+    console.log("attempting to authenticate");
+  
     try {
-      await signIn('credentials', formData);
-    } catch (error) {
-      if (error instanceof AuthError) {
-        switch (error.type) {
-          case 'CredentialsSignin':
-            return 'Incorrect Email and password';
-          default:
-            return 'Something went wrong.';
-        }
+      // Convert FormData to an object
+      const credentials = Object.fromEntries(formData.entries());
+      delete credentials.loginBTN;  // Remove loginBTN from credentials
+      
+      console.log("filtered credentials: ",credentials);
+      
+      
+      const result = await signIn("credentials", { ...credentials, redirect: false });
+      console.log("results: ", result);
+      
+  
+      if (!result?.ok) {
+        return "Incorrect Email and password";
       }
-      throw error;
+      console.log("authenticate success");
+    } catch (error) {
+      console.error("Authentication error:", error);
+      return "Something went wrong.";
     }
-    console.log("authenticate success")
   }
 
 

@@ -5,6 +5,9 @@ import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import type { User } from './app/lib/definitions';
 import bcrypt from 'bcrypt';
+import CredentialsProvider from "next-auth/providers/credentials";
+
+
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
@@ -20,7 +23,12 @@ async function getUser(email: string): Promise<User | undefined> {
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
-    Credentials({
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
       async authorize(credentials) {
         const parsedCredentials = z
           .object({ email: z.string().email(), password: z.string().min(3) })
@@ -44,6 +52,17 @@ export const { auth, signIn, signOut } = NextAuth({
     }),
   ],
   session: {
-    maxAge: 30
+    maxAge: 30,
+    strategy: "jwt", // Use JSON Web Tokens
+  },
+
+  callbacks: {
+    async signIn({ user }) {
+      return !!user; // Return `true` to allow login or `false` to block
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl; // Ensures you control where redirects go
+    },
   },
 });
+

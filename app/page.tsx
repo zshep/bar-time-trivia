@@ -1,5 +1,4 @@
 
-
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,8 +8,6 @@ import LoginForm from './ui/login-form';
 
 export default function page() {
     return (
-
-
         <main className="d-flex justify-content-evenly">
 
             
@@ -35,7 +32,4 @@ export default function page() {
         </main>
 
     );
-
-
-
 }

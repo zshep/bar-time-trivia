@@ -9,13 +9,12 @@ export async function fetchUserInfo(
     const data = await sql`
       SELECT *
       FROM users
-      where id = ${user_id}
+      where id = ${user_id};
     `;
 
-    console.log(data)
+    console.log(data);
 
-    return data
-
+    return data;
 
   } catch(error) {
     console.error('Database Error:', error);
