@@ -1,5 +1,6 @@
 import Headbanner from "../ui/headbanner";
 import Sidenav from "../ui/sidenav";
+import { SessionProvider } from "next-auth/react";
 
 
 
@@ -11,7 +12,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <Sidenav />
                 </div>
                 <main className="d-flex justify-content-center">
-                    {children}
+                    <SessionProvider>{children}</SessionProvider>
+                    
                 </main>
                 
             </div>

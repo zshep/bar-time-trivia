@@ -16,6 +16,14 @@ export const authConfig = {
       }
       return true;
     },
+    session({session, user}) {
+
+      console.log("the session has been initiated");
+      console.log("user: ", user);
+      console.log("session: ", session);
+      return session
+    }
+
   },
   providers: [], // Add providers with an empty array for now
   secret: process.env.SECRET, 
