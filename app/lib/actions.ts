@@ -154,7 +154,7 @@ export type State = {
       
       
       const result = await signIn("credentials", { ...credentials, redirect: false });
-      console.log("results: ", result);
+      console.log("signIn response object:", result); 
       
   
       if (!result?.ok) {
