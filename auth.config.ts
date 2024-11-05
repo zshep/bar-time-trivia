@@ -1,41 +1,46 @@
-import type { NextAuthConfig } from 'next-auth';
-import  NextAuthOptions  from "next-auth";
-import { NextRequest, NextResponse } from "next/server";
+import type { Session, User } from 'next-auth';
+import type { NextAuthOptions } from 'next-auth';
+import GithubProvider from 'next-auth/providers/github';
+import NextAuth from 'next-auth';
+import { NextRequest, NextResponse } from 'next/server';
 
-import { Session } from  "next-auth";
- 
-export const authConfig = {
+export const authConfig: NextAuthOptions = {
   pages: {
     signIn: '/',
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user;
-      const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
-      if (isOnDashboard) {
-        if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn) {
-        return Response.redirect(new URL('/dashboard', nextUrl));
+    async session({ session, user }: {session: Session; user: User}) {
+      // Ensure `user` has an `id` before assigning
+      if (user?.id) {
+        session.user.id = user.id;
       }
-      return true;
-    },
-    async session({session, user}) {
-
-      session.user.id = user.id;
-      console.log("the session has been initiated");
-      console.log("user: ", user);
-      console.log("session: ", session);
-      return session
+      console.log("The session has been initiated");
+      console.log("User: ", user);
+      console.log("Session: ", session);
+      return session;
     }
-
   },
-  providers: [], // Add providers with an empty array for now
-  secret: process.env.SECRET, 
-} satisfies NextAuthConfig;
+  providers: [
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    }),
+  ], // Add providers later as needed
+  secret: process.env.SECRET,
+};
 
+// Middleware function to protect routes
 export async function middleware(req: NextRequest) {
-  // Await cookies() and headers() calls
-  const cookies = await req.cookies;
-  const headers = await req.headers;
+  const { pathname } = req.nextUrl;
+  const isOnDashboard = pathname.startsWith('/dashboard');
+
+  // Check for authentication (you may need more specific logic here)
+  const authToken = req.cookies.get('next-auth.session-token');
+  
+  // If user tries to access dashboard without being authenticated, redirect to sign-in
+  if (isOnDashboard && !authToken) {
+    return NextResponse.redirect(new URL('/', req.url));
+  }
+
+  return NextResponse.next();
 }

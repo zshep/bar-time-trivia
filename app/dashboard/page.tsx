@@ -16,9 +16,8 @@ export default function page() {
 
 
         <div className="d-flex flex-row flex-stretch w-100 justify-content-around">
-            <div>
-                <UserInfo></UserInfo>
-            </div>
+        
+            
             
             <div className="d-flex flex-column mt-3">
             <div className="align-self-center">
