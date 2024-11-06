@@ -19,12 +19,13 @@ export default function LoginForm() {
             email,
             password,
         },
-        { callbackUrl: "/dashboard" }
+        
     );
 
         if (result?.error) {
             setErrorMessage("Invalid email or password.");
         } else {
+            console.log('Login successful');
             setErrorMessage(null);
         }
     };

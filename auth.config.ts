@@ -1,35 +1,40 @@
-import type { Session, User } from 'next-auth';
 import type { NextAuthOptions } from 'next-auth';
-import GithubProvider from 'next-auth/providers/github';
-import NextAuth from 'next-auth';
-import { NextRequest, NextResponse } from 'next/server';
+import GoogleProvider from 'next-auth/providers/google';
 
 export const authConfig: NextAuthOptions = {
   pages: {
     signIn: '/',
-    newuser: '/dashboard',
+    newUser: '/dashboard',
+    error: '/login-error',
   },
-  debug: process.env.NODE_ENV === 'development', // Enable debug in development mode
+  debug: process.env.NODE_ENV === 'development',
   callbacks: {
-    async session({ session, user }: {session: Session; user: User}) {
-      // Ensure `user` has an `id` before assigning
-      if (user?.id) {
-        session.user.id = user.id;
+    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+      if (url === '/api/auth/signin') {
+        return '/dashboard';
       }
-      console.log("The session has been initiated");
-      console.log("User: ", user);
-      console.log("Session: ", session);
+      return url.startsWith(baseUrl) ? url : baseUrl;
+    },
+    async session({ session, user }: { session: Session; user: User }) {
+      session.user = {
+        ...session.user,
+        id: user?.id ?? 'unknown',
+      };
       return session;
-    }
+    },
+    authorized({ auth }: { auth: { user?: any } }) {
+      return !!auth?.user;
+    },
   },
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     }),
-  ], // Add providers later as needed
+  ],
   secret: process.env.SECRET,
 };
+
 
 // Middleware function to protect routes
 export async function middleware(req: NextRequest) {
@@ -45,8 +50,5 @@ export async function middleware(req: NextRequest) {
   }
 
   return NextResponse.next();
-}
-function GoogleProvider(arg0: { clientId: string; clientSecret: string; }) {
-  throw new Error('Function not implemented.');
 }
 
