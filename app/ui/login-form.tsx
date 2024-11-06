@@ -18,7 +18,9 @@ export default function LoginForm() {
             redirect: false,
             email,
             password,
-        });
+        },
+        { callbackUrl: "/dashboard" }
+    );
 
         if (result?.error) {
             setErrorMessage("Invalid email or password.");

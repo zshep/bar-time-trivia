@@ -7,7 +7,9 @@ import { NextRequest, NextResponse } from 'next/server';
 export const authConfig: NextAuthOptions = {
   pages: {
     signIn: '/',
+    newuser: '/dashboard',
   },
+  debug: process.env.NODE_ENV === 'development', // Enable debug in development mode
   callbacks: {
     async session({ session, user }: {session: Session; user: User}) {
       // Ensure `user` has an `id` before assigning
@@ -21,9 +23,9 @@ export const authConfig: NextAuthOptions = {
     }
   },
   providers: [
-    GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ], // Add providers later as needed
   secret: process.env.SECRET,
@@ -44,3 +46,7 @@ export async function middleware(req: NextRequest) {
 
   return NextResponse.next();
 }
+function GoogleProvider(arg0: { clientId: string; clientSecret: string; }) {
+  throw new Error('Function not implemented.');
+}
+

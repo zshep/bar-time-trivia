@@ -93,6 +93,22 @@ export const { auth, signIn, signOut } = NextAuth({
       console.log("Sign-in callback triggered, user:", user);
       return Boolean(user); // Return true if user exists
     },
+    async authorized({ auth, request: { nextUrl } }) {
+      const isLoggedIn = !!auth?.user;
+      const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+      
+      // Redirect authenticated users to `/dashboard`
+      if (isLoggedIn && !isOnDashboard) {
+        return Response.redirect(new URL('/dashboard', nextUrl));
+      }
+  
+      // Redirect unauthenticated users to signIn page if trying to access `/dashboard`
+      if (!isLoggedIn && isOnDashboard) {
+        return Response.redirect(new URL('/', nextUrl));
+      }
+  
+      return true;
+    },
     redirect: async ({ baseUrl }) => baseUrl, // Redirect to base URL
   },
-});
+});0
