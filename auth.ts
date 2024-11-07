@@ -17,31 +17,41 @@ async function getUser(email: string): Promise<User | undefined> {
 }
 
 
+async function authorizeUser(credentials: any) {
+  const parsedCredentials = z
+    .object({ email: z.string().email(), password: z.string().min(3) })
+    .safeParse(credentials);
+
+  if (!parsedCredentials.success) {
+    console.log('Invalid credentials format');
+    return null;
+  }
+
+  const { email, password } = parsedCredentials.data;
+  const user = await getUser(email);
+
+  if (!user) {
+    console.log('User not found');
+    return null;
+  }
+
+  const passwordsMatch = await bcrypt.compare(password, user.password);
+
+  if (passwordsMatch) {
+    return user;
+  }
+
+  console.log('Invalid credentials');
+  return null;
+}
+
+// Usage in NextAuth
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
       async authorize(credentials) {
-        const parsedCredentials = z
-          .object({ email: z.string().email(), password: z.string().min(3) })
-          .safeParse(credentials);
-
-        if (parsedCredentials.success) {
-          const { email, password } = parsedCredentials.data;
-          const user = await getUser(email);
-          console.log("user:",user);
-          console.log("email:", email);
-          console.log("password:", password);
-
-          if (!user) return null;
-          const passwordsMatch = await bcrypt.compare(password, user.password);
-
-          if (passwordsMatch) return user;
-        }
-
-        console.log('Invalid credentials');
-        return null;
-
+        return await authorizeUser(credentials);
       },
     }),
   ],
