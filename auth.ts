@@ -17,7 +17,7 @@ async function getUser(email: string): Promise<User | undefined> {
 }
 
 
-async function authorizeUser(credentials: any) {
+async function authorizeUser(credentials: { email: string; password: string }): Promise<User | null> {
   const parsedCredentials = z
     .object({ email: z.string().email(), password: z.string().min(3) })
     .safeParse(credentials);
@@ -45,13 +45,25 @@ async function authorizeUser(credentials: any) {
   return null;
 }
 
-// Usage in NextAuth
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
       async authorize(credentials) {
-        return await authorizeUser(credentials);
+        // Validate and assert credentials type
+        if (
+          credentials &&
+          typeof credentials.email === 'string' &&
+          typeof credentials.password === 'string'
+        ) {
+          return await authorizeUser({
+            email: credentials.email,
+            password: credentials.password,
+          });
+        }
+
+        console.log('Invalid credentials format');
+        return null;
       },
     }),
   ],
