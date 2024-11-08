@@ -28,7 +28,7 @@ export default function page() {
             <div className="align-self-center">
                     <Image
                         className="rounded-circle"
-                        src="/jedi.jpg"
+                        src="/images/jedi.jpg"
                         alt="shep with lightsaber"
                         height={250}
                         width={250}

@@ -23,7 +23,7 @@ export default function page() {
                         <div className='d-flex justify-content-center flex-wrap'>
                             
                             <Image
-                                src="/jedi.jpg"
+                                src="/images/jedi.jpg"
                                 alt="shep with lightsaber"
                                 height={400}
                                 width={300}
