@@ -1,14 +1,19 @@
 import type { NextAuthConfig } from 'next-auth';
+import { NextResponse } from 'next/server';
+
+//list of protected paths
+const protectedPaths = ['/dashboard', '/settings', '/jedi']
+
 
 // helper function to authorize user
 function isAuthorized(auth: any, nextUrl: URL): boolean | Response {
-  const isLoggedIn = !!auth?.user;
-  const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+  const isLoggedIn = !!auth?.user; // making sure isLoggin is a boolean
+  const isProtectedPath = protectedPaths.some(path => nextUrl.pathname.startsWith(path));
 
-  if (isOnDashboard){
+  if (isProtectedPath){
     return isLoggedIn;
   } else if( isLoggedIn) {
-    return Response.redirect(new URL('/dashboard', nextUrl));
+    return NextResponse.redirect(new URL('/dashboard', nextUrl));
   }
   return true;
 }
