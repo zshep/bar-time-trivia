@@ -56,7 +56,7 @@ export const { auth, signIn, signOut } = NextAuth({
           typeof credentials.email === 'string' &&
           typeof credentials.password === 'string'
         ) {
-          return await authorizeUser({
+          return authorizeUser({
             email: credentials.email,
             password: credentials.password,
           });
