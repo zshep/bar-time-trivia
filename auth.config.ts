@@ -21,6 +21,7 @@ function isAuthorized(auth: any, nextUrl: URL): boolean | Response {
 export const authConfig = {
   pages: {
     signIn: '/',
+    error: '/auth/error',
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
